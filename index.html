@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav  class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <!-- entrega 4 parte 2: desplegable usuario-->
+          <li class="nav-item" dropdown> <!--crea desplegable-->
+            <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <!--atributos para que funcione el desplegable-->
+              <span id="usuario"></span> <!--muestra el nombre de usuario-->
+            </a>
+            <div class="dropdown-menu" aria-labelledby="usuarioDropdown"> <!--para las opciones del desplegable-->
+              <a class="dropdown-item" href="cart.html">Mi Carrito</a> <!--redirige a mi carrito--> 
+              <a class="dropdown-item" href="my-profile.html">Mi Perfil</a> <!--redirige a mi perfil-->
+              <div class="dropdown-divider"></div> <!--separa visualmente las opciones-->
+              <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar Sesión</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container-fluid">
+    <div class="jumbotron text-center"></div>
+    <div class="album py-5 bg-light">
+      <main id="main-display">
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div id="cars" class="carousel-item active">
+              <img src="img/cars_index.jpg" class="d-block w-100 img-carrusel" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h3 class="carrusel-text">Autos</h3>
+                <p class="carrusel-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
+              </div>
+            </div>
+            <div id="toys" class="carousel-item">
+              <img src="img/toys_index.jpg" class="d-block w-100 img-carrusel" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h3 class="carrusel-text">Juguetes</h3>
+                <p class="carrusel-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
+              </div>
+            </div>
+            <div id="furniture" class="carousel-item">
+              <img src="img/furniture_index.jpg" class="d-block w-100 img-carrusel" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h3 class="carrusel-text">Muebles</h3>
+                <p class="carrusel-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          <br>
+          
+          <div class="row">
+            <a id="botonmas" class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+          </div>
+        </div>
+      </main>
+        
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/init.js"></script>
+</body>
+
+</html>
