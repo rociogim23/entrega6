@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav  class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -29,25 +29,29 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <!-- entrega 4 parte 2: desplegable usuario-->
           <li class="nav-item" dropdown> <!--crea desplegable-->
             <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <!--atributos para que funcione el desplegable-->
               <span id="usuario"></span> <!--muestra el nombre de usuario-->
             </a>
             <div class="dropdown-menu" aria-labelledby="usuarioDropdown"> <!--para las opciones del desplegable-->
+              <button class="dropdown-item" id="btnTema">Modo día/Modo noche</button>
               <a class="dropdown-item" href="cart.html">Mi Carrito</a> <!--redirige a mi carrito--> 
               <a class="dropdown-item" href="my-profile.html">Mi Perfil</a> <!--redirige a mi perfil-->
               <div class="dropdown-divider"></div> <!--separa visualmente las opciones-->
-              <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar Sesión</a>
+              <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar Sesión</a>
             </div>
+          
+            
+            
           </li>
         </ul>
       </div>
     </div>
+    
   </nav>
-  <main class="container-fluid">
+  <main class="container-fluid bg-dark">
     <div class="jumbotron text-center"></div>
-    <div class="album py-5 bg-light">
+    <div class="album py-5 colorindex">
       <main id="main-display">
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
@@ -94,7 +98,7 @@
           <br>
           
           <div class="row">
-            <a id="botonmas" class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+            <a id="botonmas" class="btn btn-dark btn-lg btn-block" href="categories.html">Y mucho más!</a>
           </div>
         </div>
       </main>
@@ -102,7 +106,7 @@
       </div>
     </div>
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted bg-dark">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>

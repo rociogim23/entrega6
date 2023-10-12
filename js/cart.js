@@ -1,11 +1,13 @@
 
 const apiCarrito = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
+let total = 0;
 
-// Obtener productos del carrito almacenados en localStorage
+
+
 let productosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 function carritoLocal() {
-    // Crear un nuevo producto
+    
     let nuevoProducto = {
         id: localStorage.getItem("prodID"),
         imagen: localStorage.getItem("imagenCarrito"),
@@ -14,19 +16,19 @@ function carritoLocal() {
         moneda: localStorage.getItem("monedaCarrito"),
     };
 
-    // Verificar si el producto ya existe en el carrito
+   
     let productoExistente = productosCarrito.find(item => item.nombre === nuevoProducto.nombre);
 
     if (productoExistente) {
-        // Si el producto existe, incrementar la cantidad en el objeto existente
+      
         productoExistente.cantidad++;
     } else {
-        // Agregar el nuevo producto al array
-        nuevoProducto.cantidad = 1; // Establecer la cantidad en 1 para un nuevo producto
+        
+        nuevoProducto.cantidad = 1; 
         productosCarrito.push(nuevoProducto);
     }
 
-    // Actualizar el carrito en el almacenamiento local
+    
     localStorage.setItem('carrito', JSON.stringify(productosCarrito));
 }
 
@@ -71,10 +73,11 @@ async function mostrarCarrito() {
                 <td>${element.articles[0].name}</td>
                 <td>${element.articles[0].currency} ${element.articles[0].unitCost}</td>
                 <td><input id="cantidadInput" type="number"  name="${element.articles[0].unitCost}"></td>
-                <td id="total" class="negrita">${element.articles[0].currency} ${element.articles[0].unitCost}</td>
+                <td id="total" class="negrita">${element.articles[0].currency} ${element.articles[0].unitCost}</td> 
             </tr>
         </table>
     `;
+    console.log(element)
 
 
     //ENTREGA 5 DESAFIATE
@@ -82,18 +85,64 @@ async function mostrarCarrito() {
     let cont_tabla = document.getElementById("tabla-carrito");
 
 
+
+    
+
+
     productosCarrito.forEach((producto) => {
+
+
+        
+
+        
         let fila_tabla = document.createElement("tr");
-        fila_tabla.innerHTML = `
-            <td><img class="imagen-carrito" src="${producto.imagen}"/></td>
-            <td>${producto.nombre}</td>
-            <td>${producto.moneda} ${producto.costo}</td>
-            <td><input id="cantidadInputNuevo" type="number" value="${producto.cantidad}" name="${element.articles[0].unitCost}"></td>
-            <td id="totalCarrito" class="negrita">${producto.moneda} ${producto.costo}</td>
-        `;
+        if(producto.nombre != null){
+
+
+       fila_tabla.innerHTML = `
+    <td><img class="imagen-carrito" src="${producto.imagen}"/></td>
+    <td>${producto.nombre}</td>
+    <td>${producto.moneda} ${producto.costo}</td>
+    <td><input class="cantidadInputNuevo" type="number" value="${producto.cantidad}" id="cantidad_${producto.nombre}"></td>
+    <td id="subTotal" class="negrita">${producto.moneda} <span class="costoProducto">${producto.cantidad * producto.costo}</span></td>
+`;
         cont_tabla.appendChild(fila_tabla);
+
+        
+        localStorage.removeItem('nombreCarrito'); 
+        localStorage.setItem('costoCarrito', producto.costo); 
+       
+
+       
+        }
+
+          
+    const cantidadInputNuevo = document.querySelectorAll(".cantidadInputNuevo");
+    const costoProducto = document.querySelectorAll(".costoProducto");
+    
+    cantidadInputNuevo.forEach((input, index) => {
+        input.addEventListener("input", () => {
+            const cantidadInputID = input.getAttribute("id");
+            const productoNombre = cantidadInputID.split("_")[1];
+            const cantidad = parseFloat(input.value);
+            const producto = productosCarrito.find(item => item.nombre === productoNombre);
+    
+            if (!isNaN(cantidad) && producto) {
+                const costo = parseFloat(producto.costo);
+                const subtotal = cantidad * costo;
+                costoProducto[index].textContent = ` ${subtotal}`;
+            } else {
+             
+                costoProducto[index].textContent = `${producto.moneda} 0.00`;
+            }
+        });
     });
 
+
+
+    });
+    
+    
     //FIN ENTREGA 5 DESAFIATE
 
     
@@ -113,53 +162,46 @@ async function mostrarCarrito() {
         var cantidad = cantidadInput.value;        
         var precioUnitario = element.articles[0].unitCost;      
         var total = cantidad * precioUnitario;
+        var tipoMoneda = element.articles[0].currency
 
-        totalTd.textContent = "$" + total.toFixed(2);
+        totalTd.textContent = tipoMoneda + " " + total;
     }
 
 
-     /*
-let cantidadCarrito = document.getElementById("cantidadInputNuevo");
-let subtotalCarrito = document.getElementById("totalCarrito");
-
-cantidadCarrito.addEventListener("input", calcularTotal2);
 
 
-async function calcularTotal2() {
-    var cantidad = cantidadCarrito.value; 
+}
+
+
+
+
+const btnTema = document.getElementById('btnTema');
+const body = document.body;
+
+// Función para cambiar el tema
+function toggleTheme() {
+    if (body.classList.contains('dark-theme')) {
+        body.classList.remove('dark-theme');
+        localStorage.setItem('theme', 'light'); 
+    } else {
+        body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Verificar el tema almacenado en el almacenamiento local y aplicarlo si existe
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    body.classList.add('dark-theme');
+  } else {
+
+  body.classList.add('light-theme')
+  }
     
-    
-    var precioUnitario = 8000;
+// Agregar un listener al botón para cambiar el tema cuando se hace clic
+btnTema.addEventListener('click', toggleTheme);
 
 
-    var total = cantidad * precioUnitario;
-
-    subtotalCarrito.textContent = "$" + total.toFixed(2);
-}
-*/
-
-
-// Obtén los elementos de cantidad y subtotal del carrito
-let cantidadInputNuevo = document.getElementById("cantidadInputNuevo");
-let subtotalCarrito = document.getElementById("totalCarrito");
-
-// Agrega un evento de escucha para la entrada de cantidad
-cantidadInputNuevo.addEventListener("input", calcularTotal2);
-
-async function calcularTotal2() {
-    // Obtén la cantidad ingresada por el usuario
-    var cantidad = cantidadInputNuevo.value;
-
-    // Obtén el precio unitario del producto (ajústalo según tus datos reales)
-    var precioUnitario = products.cost; 
-
-    // Calcula el nuevo subtotal
-    var total = cantidad * precioUnitario;
-
-    // Actualiza el contenido del elemento que muestra el subtotal
-    subtotalCarrito.textContent = "$" + total.toFixed(2);
-}
-
-
-}
-
+let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
+let li_nav = document.getElementById("usuario");
+li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
