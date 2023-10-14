@@ -615,3 +615,14 @@ background: linear-gradient(#fbf9f7, rgb(105, 105, 105));
 .list-group .col:hover {
   background-color: #ced4da;
 }
+/*entrega 6 */
+
+#cuadroCostos{
+  max-width: 900px;
+  margin-left: 130px;
+  align-items: center;
+}
+#FinalizarCompra{
+  min-width: 898px;
+  margin-left: 120px;
+}

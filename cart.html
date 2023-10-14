@@ -30,96 +30,135 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item" dropdown> <!--crea desplegable-->
-            <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <!--atributos para que funcione el desplegable-->
+            <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"> <!--atributos para que funcione el desplegable-->
               <span id="usuario"></span> <!--muestra el nombre de usuario-->
             </a>
             <div class="dropdown-menu" aria-labelledby="usuarioDropdown"> <!--para las opciones del desplegable-->
               <button class="dropdown-item" id="btnTema">Modo día/Modo noche</button>
-              <a class="dropdown-item" href="cart.html">Mi Carrito</a> <!--redirige a mi carrito--> 
+              <a class="dropdown-item" href="cart.html">Mi Carrito</a> <!--redirige a mi carrito-->
               <a class="dropdown-item" href="my-profile.html">Mi Perfil</a> <!--redirige a mi perfil-->
               <div class="dropdown-divider"></div> <!--separa visualmente las opciones-->
               <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar Sesión</a>
             </div>
-          
-            
-            
+
+
+
           </li>
         </ul>
       </div>
     </div>
-    
+
   </nav>
   <main>
     <div class="container text-center">
-      
+
     </div>
     <br>
 
-<hr></hr>
+    <hr>
+    </hr>
 
-  <!--empieza Entrega 5 punto 2 -->
-  <div id="datosDeEnvio" class="container">
-  <form id="formularioEnvioCliente">
-    <div id="tipoDeEnvio">
-         <h3>Tipo de envio</h3>
-         <hr>
-    
-    <div>
-          <input type="radio" id="premium" name="tEnvio" >
-          <label>Premium 2 a 5 dias (15%)</label>
-    </div>
-    <br>
-    <div>
-          <input type="radio" id="express" name="tEnvio">
-          <label>Express 5 a 8 dias (7%)</label>
-    </div>
-    <br>
-    <div>
-          <input type="radio" id="standard" name="tEnvio">
-          <label>Standard 12 a 15 dias (5%)</label>
-    </div>    
-    </div>
-    
+    <!--empieza Entrega 5 punto 2 -->
+    <div id="datosDeEnvio" class="container">
+      <form id="formularioEnvioCliente">
+        <div id="tipoDeEnvio">
+          <h3>Tipo de envio</h3>
+          <br>
+
+          <div>
+            <input type="radio" id="premium" name="tEnvio">
+            <label>Premium 2 a 5 dias (15%)</label>
+          </div>
+          <br>
+          <div>
+            <input type="radio" id="express" name="tEnvio">
+            <label>Express 5 a 8 dias (7%)</label>
+          </div>
+          <br>
+          <div>
+            <input type="radio" id="standard" name="tEnvio">
+            <label>Standard 12 a 15 dias (5%)</label>
+          </div>
+        </div>
+
         <br><br>
-    
+
         <div id="direccionDeEnvio">
-          <h3>Direccion de envio</h3> 
-    
-    <div>
-      
-          <label id="calle">Calle</label> 
-          <br>
-          <input id="calle" type="text">
-          
-    </div>
-          
-    <div>
-      <label id="numero">Numero</label>
-      <br>
-      <input id="numero" type="text">
-    
-    </div>
-    
-    
-    <div>
-          <label id="esquina">Esquina</label>
-          <br>
-          <input id="esquina" type="text">
-    </div>
-    
-    </div>
+          <h3>Direccion de envio</h3>
+
+          <div>
+
+            <label id="calle">Calle</label>
+            <br>
+            <input id="calle" type="text">
+
+          </div>
+
+          <div>
+            <label id="numero">Numero</label>
+            <br>
+            <input id="numero" type="text"required/>
+
+          </div>
+
+
+          <div>
+            <label id="esquina">Esquina</label>
+            <br>
+            <input id="esquina" type="text" />
+          </div>
+
+        </div>
       </form>
     </div>
-        <!-- termina Entrega 5 punto 2 -->
+    <!-- termina Entrega 5 punto 2 -->
+    <!--  Entrega 6 punto 1 --creando estetica faltan funcionalidades -->
+    <hr>
+    <div>
+      <h3 id="cuadroCostos">Costos</h3>
+      <br>
+      <div id="cuadroCostos" class="card-container">
+        <div class="div-cards row container" id="subtotal">
+          <h5>Subtotal</h5>
+          <p>Costo unitario del producto por cantidad</p>
+          <span class="price col-sm-12 col-md-12">0</span>
+        </div>
+        <div class="div-cards row container" id="costoenvio">
+          <h5>Costo de envio</h5>
+          <p>Segun el tipo de envio</p>
+          <span class="price col-sm-12 col-md-12">USD</span>
+        </div>
+        <div class="div-cards row container" id="total">
+          <h5>Total($)</h5>
+          <span class="price col-sm-12 col-md-12"><strong>USD</strong></span>
+        </div>
 
-  
+        <!--Entrega 6 punto 2 rocio-->
+      </div>
+      <hr>
+      <div id="cuadroCostos">
+        <h3>Forma de pago</h3>
+        <br>
+
+        <p>No ha seleccionado <a href=>Seleccionar</a></p>
+      </div>
+<br>
+<br>
+<br>
+<button class="btn btn-primary" type="button" id="FinalizarCompra">Finalizar Compra</button>
+<br>
+<br>
+<br>
+
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
