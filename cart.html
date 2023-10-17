@@ -98,7 +98,7 @@
           <div>
             <label id="numero">Numero</label>
             <br>
-            <input id="numero" type="text"required/>
+            <input id="numero" type="text">
 
           </div>
 
@@ -112,6 +112,7 @@
         </div>
       </form>
     </div>
+    <br>
     <!-- termina Entrega 5 punto 2 -->
     <!--  Entrega 6 punto 1 --creando estetica faltan funcionalidades -->
     <hr>
@@ -133,23 +134,60 @@
           <h5>Total($)</h5>
           <span class="price col-sm-12 col-md-12, totaldeTodo">USD</span>
         </div>
-
+<br>
+<br>
         <!--Entrega 6 punto 2 rocio-->
       </div>
       <hr>
       <div id="cuadroCostos">
         <h3>Forma de pago</h3>
         <br>
+        <!--Entrega 6 punto 2 modal rocio-->
+        No ha seleccionado <a href="#openModal">Seleccionar</a>
 
-        <p>No ha seleccionado <a href=>Seleccionar</a></p>
+        <div id="openModal" class="modalDialog">
+          <div>
+            <a href="#close" title="Close" class="close">X</a>
+            <h2>Forma de Pago</h2>
+            <hr>
+            <form>
+              <input type="radio" id="credito" name="tarjeta">
+              <label>Tarjeta de Crédito</label>
+              <hr>
+              <label id="numtjta">Número de Tarjeta</label>
+              <br>
+              <input id="numtjta" type="text"><br>
+
+              <label id="codsg">Código de seguridad</label>
+              <br>
+              <input id="codsg" type="text">
+
+              <label id="fechavenc">Fecha de vencimiento(MM/AA)</label>
+              <br>
+              <input id="fechavenc" type="datetime" value="  /  ">
+              <br>
+              <br>
+              <hr>
+              <input type="radio" id="transferencia" name="tarjeta">
+              <label>Transferencia Bancaria</label>
+              <hr>
+              <label id="cuentaTransf">Número de cuenta</label>
+              <br>
+              <input id="cuentaTransf" type="text">
+              <hr>
+            </form>
+          </div>
+        </div>
+        <!--FINAL MODAL ENTREGA 6 PUNTO 2-->
+
       </div>
-<br>
-<br>
-<br>
-<button class="btn btn-primary" type="button" id="FinalizarCompra">Finalizar Compra</button>
-<br>
-<br>
-<br>
+      <br>
+      <br>
+      <br>
+      <button class="btn btn-primary" type="button" id="FinalizarCompra">Finalizar Compra</button>
+      <br>
+      <br>
+      <br>
 
   </main>
   <footer class="text-muted">
