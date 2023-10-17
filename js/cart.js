@@ -167,9 +167,6 @@ async function mostrarCarrito() {
         totalTd.textContent = tipoMoneda + " " + total;
     }
 
-
-
-
 }
 
 
@@ -205,3 +202,28 @@ btnTema.addEventListener('click', toggleTheme);
 let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
 let li_nav = document.getElementById("usuario");
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
+
+//ENTREGA 6 Punto 1
+
+const subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+
+document.addEventListener("DOMContentLoaded", function() {
+    const subtotales = document.querySelectorAll(".costoProducto");
+    let total = 0;
+    subtotales.forEach(subtotal => {
+        total += parseFloat(subtotal.textContent);
+    });
+    subtotaldeTodos.textContent = "USD " + total.toFixed(2);
+});
+
+document.addEventListener("input", function (event) {
+    if (event.target.classList.contains("cantidadInputNuevo")) {
+        const subtotales = document.querySelectorAll(".costoProducto");
+        let total = 0;
+        subtotales.forEach(subtotal => {
+            total += parseFloat(subtotal.textContent);
+        });
+        subtotaldeTodos.textContent = "USD " + total.toFixed(2);
+        calcularTotal();
+    }
+});
