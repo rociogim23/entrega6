@@ -186,7 +186,7 @@ function toggleTheme() {
     }
 }
 
-// Verificar el tema almacenado en el almacenamiento local y aplicarlo si existe
+
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
     body.classList.add('dark-theme');
@@ -195,15 +195,18 @@ if (currentTheme === 'dark') {
   body.classList.add('light-theme')
   }
     
-// Agregar un listener al botón para cambiar el tema cuando se hace clic
+
 btnTema.addEventListener('click', toggleTheme);
 
-
-let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
+//MOSTRAR BOTON CON NOMBRE DE USUARIO
+let email = localStorage.getItem("email"); // <- email 
 let li_nav = document.getElementById("usuario");
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
 
-//ENTREGA 6 Punto 1
+
+
+
+//SUBTOTAL ENTREGA 6 PUNTO 1
 
 const subtotaldeTodos = document.querySelector(".subtotaldeTodos");
 
@@ -225,5 +228,64 @@ document.addEventListener("input", function (event) {
         });
         subtotaldeTodos.textContent = "USD " + total.toFixed(2);
         calcularTotal();
+    }
+});
+
+
+
+//COSTO DE ENVIO PARTE 6 PUNTO 1
+document.addEventListener("DOMContentLoaded", function() {
+
+    const subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    const subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    const premiumRadio = document.getElementById("premium");
+    const expressRadio = document.getElementById("express");
+    const standardRadio = document.getElementById("standard");
+
+    CalcularSubtotaldeEnvio();
+
+
+    premiumRadio.addEventListener("change", CalcularSubtotaldeEnvio);
+    expressRadio.addEventListener("change", CalcularSubtotaldeEnvio);
+    standardRadio.addEventListener("change", CalcularSubtotaldeEnvio);
+
+    
+    function CalcularSubtotaldeEnvio() {
+        const subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
+        let porcentajeSubtotal = 0;
+
+        
+        if (premiumRadio.checked) {
+            porcentajeSubtotal = 0.15; // 15%
+        } else if (expressRadio.checked) {
+            porcentajeSubtotal = 0.07; // 7%
+        } else if (standardRadio.checked) {
+            porcentajeSubtotal = 0.05; // 5%
+        }
+
+        const subtotalconEnvio = subtotalTodos * porcentajeSubtotal;
+        subtotaldeEnvio.textContent = "USD " + subtotalconEnvio.toFixed(2);
+    }
+});
+
+
+//TOTAL ENTREGA 6 PARTE 1
+document.addEventListener("DOMContentLoaded", function() {
+    const subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    const subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    const totaldeTodo = document.querySelector(".totaldeTodo");
+
+    calcularYmostrarTotal();
+
+   
+    subtotaldeEnvio.addEventListener("DOMSubtreeModified", calcularYmostrarTotal);
+    subtotaldeTodos.addEventListener("DOMSubtreeModified", calcularYmostrarTotal);
+
+    function calcularYmostrarTotal() {
+        const subtotalEnvio = parseFloat(subtotaldeEnvio.textContent.replace("USD ", ""));
+        const subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
+
+        const total = subtotalTodos + subtotalEnvio;
+        totaldeTodo.textContent = "USD " + total.toFixed(2);
     }
 });
