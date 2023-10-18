@@ -330,20 +330,40 @@ transferenciaRadio.addEventListener("change", function() {
 
 
 
+let isModalOpen = false;
+
+
+function closeModal() {
+    isModalOpen = false;
+    const modal = document.getElementById("openModal");
+    modal.style.display = "none";
+    document.body.classList.remove("blur-background");
+}   
 
 
 function openModal() {
-  const modal = document.getElementById("openModal");
-  modal.style.display = "block";
-  document.body.classList.add("blur-background"); // Aplica desenfoque al fondo
+    isModalOpen = true;
+    const modal = document.getElementById("openModal");
+    modal.style.display = "block";
+    document.body.classList.add("blur-background");
+    history.pushState(null, null, window.location.pathname); // Agregar un nuevo estado sin fragmento de URL
+
+    // Al abrir el modal, guardar un valor en localStorage
+    localStorage.setItem('modalOpened', 'true');
 }
 
-function closeModal() {
-  const modal = document.getElementById("openModal");
-  modal.style.display = "none";
-  document.body.classList.remove("blur-background"); // Elimina el desenfoque del fondo
-}
 
-    document.querySelector('a[href="#openModal"]').addEventListener('click', openModal);
 
-    document.querySelector('a[href="#close"]').addEventListener('click', closeModal);
+// Event listener para cerrar el modal al hacer clic en el botón "Cerrar" dentro del modal
+document.querySelector('a[href="#close"]').addEventListener('click', function (event) {
+    event.preventDefault();
+    closeModal();
+});
+
+// Event listener para abrir el modal al hacer clic en el enlace
+document.querySelector('a[href="#openModal"]').addEventListener('click', function (event) {
+    event.preventDefault();
+    openModal();
+});
+
+
