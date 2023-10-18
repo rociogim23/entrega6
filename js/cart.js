@@ -54,7 +54,7 @@ async function mostrarCarrito() {
 
 
     contenedor.innerHTML += `
-        <h2 class="h1Carrito">Carrito de Compras</h2>
+        <h2 class="container text-center">Carrito de Compras</h2>
         <br>
         <h3>Artículos a comprar</h3>
         <br>
