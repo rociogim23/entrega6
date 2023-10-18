@@ -1,5 +1,5 @@
 
-const apiCarrito = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
+let apiCarrito = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
 let total = 0;
 
 
@@ -38,8 +38,8 @@ function carritoLocal() {
 
 
 async function carritoFetch() {
-    const res = await fetch(apiCarrito);
-    const data = await res.json();
+    let res = await fetch(apiCarrito);
+    let data = await res.json();
     return data;
 }
 
@@ -49,7 +49,7 @@ async function carritoFetch() {
 mostrarCarrito();
 
 async function mostrarCarrito() {
-    const element = await carritoFetch();
+    let element = await carritoFetch();
     let contenedor = document.querySelector("main .container");
 
 
@@ -117,19 +117,19 @@ async function mostrarCarrito() {
         }
 
           
-    const cantidadInputNuevo = document.querySelectorAll(".cantidadInputNuevo");
-    const costoProducto = document.querySelectorAll(".costoProducto");
+    let cantidadInputNuevo = document.querySelectorAll(".cantidadInputNuevo");
+    let costoProducto = document.querySelectorAll(".costoProducto");
     
     cantidadInputNuevo.forEach((input, index) => {
         input.addEventListener("input", () => {
-            const cantidadInputID = input.getAttribute("id");
-            const productoNombre = cantidadInputID.split("_")[1];
-            const cantidad = parseFloat(input.value);
-            const producto = productosCarrito.find(item => item.nombre === productoNombre);
+            let cantidadInputID = input.getAttribute("id");
+            let productoNombre = cantidadInputID.split("_")[1];
+            let cantidad = parseFloat(input.value);
+            let producto = productosCarrito.find(item => item.nombre === productoNombre);
     
             if (!isNaN(cantidad) && producto) {
-                const costo = parseFloat(producto.costo);
-                const subtotal = cantidad * costo;
+                let costo = parseFloat(producto.costo);
+                let subtotal = cantidad * costo;
                 costoProducto[index].textContent = ` ${subtotal}`;
             } else {
              
@@ -158,7 +158,7 @@ async function mostrarCarrito() {
 
 
    async function calcularTotal() {
-        const element = await carritoFetch();
+        let element = await carritoFetch();
         var cantidad = cantidadInput.value;        
         var precioUnitario = element.articles[0].unitCost;      
         var total = cantidad * precioUnitario;
@@ -172,8 +172,8 @@ async function mostrarCarrito() {
 
 
 
-const btnTema = document.getElementById('btnTema');
-const body = document.body;
+let btnTema = document.getElementById('btnTema');
+let body = document.body;
 
 // Función para cambiar el tema
 function toggleTheme() {
@@ -187,7 +187,7 @@ function toggleTheme() {
 }
 
 
-const currentTheme = localStorage.getItem('theme');
+let currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
     body.classList.add('dark-theme');
   } else {
@@ -208,10 +208,10 @@ li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
 
 //SUBTOTAL ENTREGA 6 PUNTO 1
 
-const subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
 
 document.addEventListener("DOMContentLoaded", function() {
-    const subtotales = document.querySelectorAll(".costoProducto");
+    let subtotales = document.querySelectorAll(".costoProducto");
     let total = 0;
     subtotales.forEach(subtotal => {
         total += parseFloat(subtotal.textContent);
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("input", function (event) {
     if (event.target.classList.contains("cantidadInputNuevo")) {
-        const subtotales = document.querySelectorAll(".costoProducto");
+        let subtotales = document.querySelectorAll(".costoProducto");
         let total = 0;
         subtotales.forEach(subtotal => {
             total += parseFloat(subtotal.textContent);
@@ -236,11 +236,11 @@ document.addEventListener("input", function (event) {
 //COSTO DE ENVIO PARTE 6 PUNTO 1
 document.addEventListener("DOMContentLoaded", function() {
 
-    const subtotaldeTodos = document.querySelector(".subtotaldeTodos");
-    const subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
-    const premiumRadio = document.getElementById("premium");
-    const expressRadio = document.getElementById("express");
-    const standardRadio = document.getElementById("standard");
+    let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    let premiumRadio = document.getElementById("premium");
+    let expressRadio = document.getElementById("express");
+    let standardRadio = document.getElementById("standard");
 
     CalcularSubtotaldeEnvio();
 
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     function CalcularSubtotaldeEnvio() {
-        const subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
+        let subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
         let porcentajeSubtotal = 0;
 
         
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function() {
             porcentajeSubtotal = 0.05; // 5%
         }
 
-        const subtotalconEnvio = subtotalTodos * porcentajeSubtotal;
+        let subtotalconEnvio = subtotalTodos * porcentajeSubtotal;
         subtotaldeEnvio.textContent = "USD " + subtotalconEnvio.toFixed(2);
     }
 });
@@ -271,9 +271,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //TOTAL ENTREGA 6 PARTE 1
 document.addEventListener("DOMContentLoaded", function() {
-    const subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
-    const subtotaldeTodos = document.querySelector(".subtotaldeTodos");
-    const totaldeTodo = document.querySelector(".totaldeTodo");
+    let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    let totaldeTodo = document.querySelector(".totaldeTodo");
 
     calcularYmostrarTotal();
 
@@ -282,10 +282,68 @@ document.addEventListener("DOMContentLoaded", function() {
     subtotaldeTodos.addEventListener("DOMSubtreeModified", calcularYmostrarTotal);
 
     function calcularYmostrarTotal() {
-        const subtotalEnvio = parseFloat(subtotaldeEnvio.textContent.replace("USD ", ""));
-        const subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
+        let subtotalEnvio = parseFloat(subtotaldeEnvio.textContent.replace("USD ", ""));
+        let subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
 
-        const total = subtotalTodos + subtotalEnvio;
+        let total = subtotalTodos + subtotalEnvio;
         totaldeTodo.textContent = "USD " + total.toFixed(2);
     }
 });
+
+
+
+
+
+
+
+
+let creditoRadio = document.getElementById("credito");
+let transferenciaRadio = document.getElementById("transferencia");
+let inputsTarjetaCredito = document.querySelectorAll("#tarjetaCredito input");
+let inputsTransferencia = document.querySelectorAll("#transferenciaBancaria input");
+
+creditoRadio.addEventListener("change", function() {
+    let isCreditoSelected = creditoRadio.checked;
+    inputsTarjetaCredito.forEach(input => {
+        input.disabled = !isCreditoSelected;
+    });
+
+    if (isCreditoSelected) {
+        inputsTransferencia.forEach(input => {
+            input.disabled = true;
+        });
+    }
+});
+
+transferenciaRadio.addEventListener("change", function() {
+    let isTransferenciaSelected = transferenciaRadio.checked;
+    inputsTransferencia.forEach(input => {
+        input.disabled = !isTransferenciaSelected;
+    });
+
+    if (isTransferenciaSelected) {
+        inputsTarjetaCredito.forEach(input => {
+            input.disabled = true;
+        });
+    }
+});
+
+
+
+
+
+function openModal() {
+  const modal = document.getElementById("openModal");
+  modal.style.display = "block";
+  document.body.classList.add("blur-background"); // Aplica desenfoque al fondo
+}
+
+function closeModal() {
+  const modal = document.getElementById("openModal");
+  modal.style.display = "none";
+  document.body.classList.remove("blur-background"); // Elimina el desenfoque del fondo
+}
+
+    document.querySelector('a[href="#openModal"]').addEventListener('click', openModal);
+
+    document.querySelector('a[href="#close"]').addEventListener('click', closeModal);
