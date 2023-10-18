@@ -616,6 +616,16 @@ background: linear-gradient(#fbf9f7, rgb(105, 105, 105));
   background-color: #ced4da;
 }
 /*entrega 6 */
+.invalid-field {
+  border: 2px solid red; /* Borde rojo alrededor del campo */
+}
+
+/* Estilo para los mensajes de error */
+.error-message {
+  color: red; /* Texto rojo */
+  font-size: 14px; /* Tamaño de fuente */
+  margin-top: 5px; /* Espacio superior */
+}
 
 #cuadroCostos{
   max-width: 900px;

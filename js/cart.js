@@ -207,7 +207,7 @@ let li_nav = document.getElementById("usuario");
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
 
 
-
+//INICIO ENTREGA 6 PUNTO 1
 
 //SUBTOTAL ENTREGA 6 PUNTO 1
 
@@ -236,7 +236,7 @@ document.addEventListener("input", function (event) {
 
 
 
-//COSTO DE ENVIO PARTE 6 PUNTO 1
+//COSTO DE ENVIO ENTREGA 6 PUNTO 1
 document.addEventListener("DOMContentLoaded", function() {
 
     let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
@@ -293,12 +293,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+//FIN ENTREGA 6 PARTE 1
 
 
 
 
-
-
+//INICIO ENTREGA 6 PARTE 2
 
 let creditoRadio = document.getElementById("credito");
 let transferenciaRadio = document.getElementById("transferencia");
@@ -331,41 +331,31 @@ transferenciaRadio.addEventListener("change", function() {
     }
 });
 
-
-
 let isModalOpen = false;
-
 
 function closeModal() {
     isModalOpen = false;
-    const modal = document.getElementById("openModal");
+    let modal = document.getElementById("openModal");
     modal.style.display = "none";
     document.body.classList.remove("blur-background");
 }   
 
-
 function openModal() {
     isModalOpen = true;
-    const modal = document.getElementById("openModal");
+    let modal = document.getElementById("openModal");
     modal.style.display = "block";
     document.body.classList.add("blur-background");
-    history.pushState(null, null, window.location.pathname); // Agregar un nuevo estado sin fragmento de URL
-
-    // Al abrir el modal, guardar un valor en localStorage
     localStorage.setItem('modalOpened', 'true');
 }
 
-
-
-// Event listener para cerrar el modal al hacer clic en el botón "Cerrar" dentro del modal
 document.querySelector('a[href="#close"]').addEventListener('click', function (event) {
     event.preventDefault();
     closeModal();
 });
 
-// Event listener para abrir el modal al hacer clic en el enlace
 document.querySelector('a[href="#openModal"]').addEventListener('click', function (event) {
     event.preventDefault();
     openModal();
 });
 
+//FIN ENTREGA 6 PARTE 2
