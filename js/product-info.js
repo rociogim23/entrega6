@@ -151,21 +151,34 @@ async function nuevoDisplay() {
     let btnAgregar = document.getElementById("btnAgregarCarrito");
     // Entrega 5 --- DESAFIATE
     btnAgregar.addEventListener("click", async function () {
-
-     window.location.reload();
-
+        // Obtener el carrito de compras actual desde el almacenamiento local
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    
         let productoCarrito = await fetchProducts();
-
-alert('Tu producto se agregó correctamente al carrito de compras')
-        localStorage.setItem("imagenCarrito", `${productoCarrito.images[0]}`);
-        localStorage.setItem("nombreCarrito", `${productoCarrito.name}`);
-        localStorage.setItem("costoCarrito", `${productoCarrito.cost}`);
-        localStorage.setItem("monedaCarrito", `${productoCarrito.currency}`);
-    })
-
-
-    carritoLocal();
-
+    
+        // Verificar si el producto ya existe en el carrito
+        let productoExistente = carrito.find(item => item.id === localStorage.getItem("prodID"));
+    
+        if (productoExistente) {
+            // Si el producto ya está en el carrito, incrementa la cantidad en 1
+            productoExistente.cantidad++;
+        } else {
+            // Si el producto no está en el carrito, agrégalo con cantidad 1
+            carrito.push({
+                id: localStorage.getItem("prodID"),
+                imagen: productoCarrito.images[0],
+                nombre: productoCarrito.name,
+                costo: productoCarrito.cost,
+                moneda: productoCarrito.currency,
+                cantidad: 1
+            });
+        }
+    
+        // Actualizar el carrito en el almacenamiento local
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    
+        alert('Tu producto se agregó correctamente al carrito de compras');
+    });
     
    
 }
