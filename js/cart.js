@@ -100,12 +100,15 @@ async function mostrarCarrito() {
 
 
        fila_tabla.innerHTML = `
+    
     <td><img class="imagen-carrito" src="${producto.imagen}"/></td>
     <td>${producto.nombre}</td>
     <td>${producto.moneda} ${producto.costo}</td>
     <td><input class="cantidadInputNuevo" type="number" value="${producto.cantidad}" id="cantidad_${producto.nombre}"></td>
     <td id="subTotal" class="negrita">${producto.moneda} <span class="costoProducto">${producto.cantidad * producto.costo}</span></td>
+    <td><button class="btn-quitar-producto, quitarProducto" data-nombre="${producto.nombre}">Quitar</button></td>
 `;
+
         cont_tabla.appendChild(fila_tabla);
 
         
@@ -365,5 +368,4 @@ document.querySelector('a[href="#openModal"]').addEventListener('click', functio
     event.preventDefault();
     openModal();
 });
-
 
