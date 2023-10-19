@@ -66,6 +66,7 @@ async function mostrarCarrito() {
                 <th>Costo</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
+                <th>Acciones</th>
             </tr>
             <br>
             <tr>
@@ -106,7 +107,7 @@ async function mostrarCarrito() {
     <td>${producto.moneda} ${producto.costo}</td>
     <td><input class="cantidadInputNuevo" type="number" value="${producto.cantidad}" id="cantidad_${producto.nombre}"></td>
     <td id="subTotal" class="negrita">${producto.moneda} <span class="costoProducto">${producto.cantidad * producto.costo}</span></td>
-    <td><button class="btn-quitar-producto, quitarProducto" data-nombre="${producto.nombre}">Quitar</button></td>
+    <td><button class="btn-quitar-producto, quitarProducto" data-nombre="${producto.nombre}">Eliminar</button></td>
 `;
 
         cont_tabla.appendChild(fila_tabla);
@@ -359,3 +360,21 @@ document.querySelector('a[href="#openModal"]').addEventListener('click', functio
 });
 
 //FIN ENTREGA 6 PARTE 2
+
+
+
+// Desafiate 
+
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("quitarProducto")) {      
+       
+const productName = event.target.getAttribute("data-nombre");
+
+         productosCarrito = productosCarrito.filter(product => product.nombre !== productName);
+
+       
+        localStorage.setItem('carrito', JSON.stringify(productosCarrito));
+
+        event.target.closest("tr").remove();
+    }
+});

@@ -692,3 +692,9 @@ transition: opacity 400ms ease-in;
 	box-shadow: 1px 1px 3px #000;
 }
 .close:hover { background: #00d9ff; }
+
+.quitarProducto 
+  {background-color:rgb(255, 255, 255); border: 2px solid#ff0000;}
+
+
+.quitarProducto:hover {background: #da190b; color: white;}
