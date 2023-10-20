@@ -342,6 +342,7 @@ document.addEventListener("click", function (event) {
     }
 });
 
+//Actualiza el Precio al quitar un producto
 document.addEventListener("DOMContentLoaded", actualizarPrecios);
 // Llama a la función para actualizar los precios cuando se elimina un producto
 document.addEventListener("click", function (event) {
