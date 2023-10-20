@@ -1,221 +1,194 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item" dropdown> <!--crea desplegable-->
-            <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false"> <!--atributos para que funcione el desplegable-->
-              <span id="usuario"></span> <!--muestra el nombre de usuario-->
-            </a>
-            <div class="dropdown-menu" aria-labelledby="usuarioDropdown"> <!--para las opciones del desplegable-->
-              <button class="dropdown-item" id="btnTema">Modo día/Modo noche</button>
-              <a class="dropdown-item" href="cart.html">Mi Carrito</a> <!--redirige a mi carrito-->
-              <a class="dropdown-item" href="my-profile.html">Mi Perfil</a> <!--redirige a mi perfil-->
-              <div class="dropdown-divider"></div> <!--separa visualmente las opciones-->
-              <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar Sesión</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sell.html">Vender</a>
+                    </li>
+                    <li class="nav-item" dropdown>
+                        <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span id="usuario"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
+                            <button class="dropdown-item" id="btnTema">Modo día/Modo noche</button>
+                            <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+                            <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-
-
-
-          </li>
-        </ul>
-      </div>
-    </div>
-
-  </nav>
-  <main>
-    <div class="container text-center">
-
-    </div>
-    <br>
-
-    <hr>
-    </hr>
-
-    <!--empieza Entrega 5 punto 2 -->
-    <div id="datosDeEnvio" class="container">
-      <form id="formularioEnvioCliente">
-        <div id="tipoDeEnvio">
-          <h3>Tipo de envio</h3>
-          <br>
-
-          <div>
-            <input type="radio" id="premium" name="envio">
-            <label>Premium 2 a 5 dias (15%)</label>
-          </div>
-          <br>
-          <div>
-            <input type="radio" id="express" name="envio">
-            <label>Express 5 a 8 dias (7%)</label>
-          </div>
-          <br>
-          <div>
-            <input type="radio" id="standard" name="envio">
-            <label>Standard 12 a 15 dias (5%)</label>
-          </div>
         </div>
-        <div id="envio-error" class="error-message"></div>
-        <br><br>
-
-        <div id="direccionDeEnvio">
-          <h3>Direccion de envio</h3>
-
-          <div>
-
-            <label>Calle</label>
-            <br>
-          
-            <input id="calle" type="text" required>
-            
-          </div>
-          <br>
-          <div>
-            <label>Numero</label>
-            <br>
-            <input id="numero" type="text"required>
-
-          </div>
-          <br>
-
-          <div>
-            <label >Esquina</label>
-            <br>
-            <input id="esquina" type="text" required/>
-          </div>
-
+    </nav>
+    <main>
+        <div class="container text-center">
+            <!-- Contenido principal -->
         </div>
-      </form>
-    </div>
-    <br>
-    <!-- termina Entrega 5 punto 2 -->
-    <!--  Entrega 6 punto 1 --creando estetica faltan funcionalidades -->
-    <hr>
-    <div>
-      <h3 id="cuadroCostos">Costos</h3>
-      <br>
-      <div id="cuadroCostos" class="card-container">
-        <div class="div-cards row container" id="subtotal">
-          <h5>Subtotal</h5>
-          <p>Costo unitario del producto por cantidad</p>
-          <span class="price col-sm-12 col-md-12, subtotaldeTodos">0</span>
-        </div>
-        <div class="div-cards row container" id="costoenvio">
-          <h5>Costo de envio</h5>
-          <p>Segun el tipo de envio</p>
-          <span class="price col-sm-12 col-md-12, subtotaldeEnvio">USD</span>
-        </div>
-        <div class="div-cards row container" id="total">
-          <h5>Total($)</h5>
-          <span class="price col-sm-12 col-md-12, totaldeTodo">USD</span>
-        </div>
-<br>
-<br>
-        <!--Entrega 6 punto 2 rocio-->
-      </div>
-      <hr>
-      <div id="cuadroCostos">
-        <h3>Forma de pago</h3>
         <br>
-        <!--Entrega 6 punto 2 modal rocio-->
-        No ha seleccionado su forma de pago <a href="#openModal">Seleccionar</a>
-        <div id="openModal" class="modalDialog">
-          <div>
-            <a href="#close" title="Close" class="close">X</a>
-            <h2>Forma de Pago</h2>
-            <hr>
-            <form>
-              <input type="radio" id="credito" name="tarjeta">
-              <label>Tarjeta de Crédito</label>
-              <div id="tarjetaCredito">
-              <hr>
-              <label id="numtjta">Número de Tarjeta</label>
-              <br>
-              <input id="numtjta" type="text" required><br>
-
-              <label id="codsg">Código de seguridad</label>
-              <br>
-              <input id="codsg" type="text" required>
-
-              <label id="fechavenc">Fecha de vencimiento(MM/AA)</label>
-              <br>
-              <input id="fechavenc" type="datetime" value="  /  " required>
-            </div>
-              <br>
-              <br>
-              <input type="radio" id="transferencia" name="tarjeta">
-              <label>Transferencia Bancaria</label>
-              <div id="transferenciaBancaria">
-              <hr>
-              <label id="cuentaTransf">Número de cuenta</label>
-              <br>
-              <input id="cuentaTransf" type="text" required>
-            </div>
-              <hr>
+        <hr>
+        <!-- Inicio Entrega 5 Punto 2 -->
+        <div id="datosDeEnvio" class="container">
+            <form id="formularioEnvioCliente">
+                <div id="tipoDeEnvio">
+                    <h3>Tipo de envío</h3>
+                    <br>
+                    <div>
+                        <input type="radio" id="premium" name="envio">
+                        <label>Premium 2 a 5 días (15%)</label>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="radio" id="express" name="envio">
+                        <label>Express 5 a 8 días (7%)</label>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="radio" id="standard" name="envio">
+                        <label>Standard 12 a 15 días (5%)</label>
+                    </div>
+                </div>
+                <div id="envio-error" class="error-message"></div>
+                <br><br>
+                <div id="direccionDeEnvio">
+                    <h3>Dirección de envío</h3>
+                    <div>
+                        <label>Calle</label>
+                        <br>
+                        <input id="calle" type="text" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label>Número</label>
+                        <br>
+                        <input id="numero" type="text" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label>Esquina</label>
+                        <br>
+                        <input id="esquina" type="text" required>
+                    </div>
+                </div>
             </form>
-          </div>
         </div>
-        <!--FINAL MODAL ENTREGA 6 PUNTO 2-->
-
-      </div>
-
-
-      
-      <br>
-      <br>
-      <br>
-      <button class="btn btn-primary" type="button" id="FinalizarCompra">Finalizar Compra</button>
-      <br>
-      <br>
-      <br>
-
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-      </p>
+        <br>
+        <!-- Fin Entrega 5 Punto 2 -->
+        <hr>
+        <div>
+            <h3 id="cuadroCostos">Costos</h3>
+            <br>
+            <div id="cuadroCostos" class="card-container">
+                <div class="div-cards row container" id="subtotal">
+                    <h5>Subtotal</h5>
+                    <p>Costo unitario del producto por cantidad</p>
+                    <span class="price col-sm-12 col-md-12, subtotaldeTodos">0</span>
+                </div>
+                <div class="div-cards row container" id="costoenvio">
+                    <h5>Costo de envío</h5>
+                    <p>Según el tipo de envío</p>
+                    <span class="price col-sm-12 col-md-12, subtotaldeEnvio">USD</span>
+                </div>
+                <div class="div-cards row container" id="total">
+                    <h5>Total($)</h5>
+                    <span class="price col-sm-12 col-md-12, totaldeTodo">USD</span>
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- Entrega 6 Punto 2 Rocio -->
+        </div>
+        <hr>
+        <div id="cuadroCostos">
+            <h3>Forma de pago</h3>
+            <br>
+            <!-- Entrega 6 Punto 2 Modal Rocio -->
+            No ha seleccionado su forma de pago <a href="#openModal">Seleccionar</a>
+            <div id="openModal" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2>Forma de Pago</h2>
+                    <hr>
+                    <form>
+                        <input type="radio" id="credito" name="tarjeta">
+                        <label>Tarjeta de Crédito</label>
+                        <div id="tarjetaCredito">
+                            <hr>
+                            <label id="numtjta">Número de Tarjeta</label>
+                            <br>
+                            <input id="numtjta" type="text" required><br>
+                            <label id="codsg">Código de seguridad</label>
+                            <br>
+                            <input id="codsg" type="text" required>
+                            <label id="fechavenc">Fecha de vencimiento(MM/AA)</label>
+                            <br>
+                            <input id="fechavenc" type="datetime" value="  /  " required>
+                        </div>
+                        <br>
+                        <br>
+                        <input type="radio" id="transferencia" name="tarjeta">
+                        <label>Transferencia Bancaria</label>
+                        <div id="transferenciaBancaria">
+                            <hr>
+                            <label id="cuentaTransf">Número de cuenta</label>
+                            <br>
+                            <input id="cuentaTransf" type="text" required>
+                        </div>
+                        <hr>
+                    </form>
+                </div>
+            </div>
+            <!-- FINAL MODAL Entrega 6 Punto 2 -->
+        </div>
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-primary" type="button" id="FinalizarCompra">Finalizar Compra</button>
+        <br>
+        <br>
+        <br>
+    </main>
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-end">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+        </div>
+    </footer>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
 </body>
-
 </html>
