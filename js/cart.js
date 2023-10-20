@@ -101,6 +101,7 @@ async function mostrarCarrito() {
                 }
             });
         });
+        actualizarPrecios()
     });
 
     let cantidadInput = document.getElementById("cantidadInput");
@@ -226,6 +227,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function actualizarPrecios() {
+    let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    let totaldeTodo = document.querySelector(".totaldeTodo");
+    
+    let subtotales = document.querySelectorAll(".costoProducto");
+    let totalSubtotal = 0;
+    
+    subtotales.forEach(subtotal => {
+        totalSubtotal += parseFloat(subtotal.textContent);
+    });
+    
+    let premiumRadio = document.getElementById("premium");
+    let expressRadio = document.getElementById("express");
+    let standardRadio = document.getElementById("standard");
+    let porcentajeSubtotal = 0;
+    
+    if (premiumRadio.checked) {
+        porcentajeSubtotal = 0.15; // 15%
+    } else if (expressRadio.checked) {
+        porcentajeSubtotal = 0.07; // 7%
+    } else if (standardRadio.checked) {
+        porcentajeSubtotal = 0.05; // 5%
+    }
+    
+    let subtotalEnvio = totalSubtotal * porcentajeSubtotal;
+    let total = totalSubtotal + subtotalEnvio;
+    
+    subtotaldeTodos.textContent = "USD " + totalSubtotal.toFixed(2);
+    subtotaldeEnvio.textContent = "USD " + subtotalEnvio.toFixed(2);
+    totaldeTodo.textContent = "USD " + total.toFixed(2);
+}
+
+
+
+
 //FIN ENTREGA 6 PARTE 1
 
 //INICIO ENTREGA 6 PARTE 2
@@ -304,3 +341,12 @@ document.addEventListener("click", function (event) {
         event.target.closest("tr").remove();
     }
 });
+
+document.addEventListener("DOMContentLoaded", actualizarPrecios);
+// Llama a la función para actualizar los precios cuando se elimina un producto
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("quitarProducto")) {
+        actualizarPrecios();
+    }
+});
+
