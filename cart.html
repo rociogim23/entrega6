@@ -77,7 +77,8 @@
           </div>
           <br>
           <div>
-            <input type="radio" id="standard" name="tEnvio">
+            <input type="radio" checked="checked" id="standard" name="tEnvio">
+            <!--Se agrego el "checked="checked para iniciar la pagina con el standar predefinido.-->
             <label>Standard 12 a 15 dias (5%)</label>
           </div>
         </div>
@@ -89,24 +90,31 @@
 
           <div>
 
-            <label id="calle">Calle</label>
-            <br>
-            <input id="calle" type="text">
+            <!--Se borro el id del label "calle" -->
+            <label>
+              Calle
+              <br>
+              <input id="calle" type="text">
+            </label>
 
           </div>
 
           <div>
-            <label id="numero">Numero</label>
-            <br>
-            <input id="numero" type="text"required/>
+            <label>
+              Numero
+              <br>
+              <input id="numero" type="text"required/>
+            </label>
 
           </div>
 
 
           <div>
-            <label id="esquina">Esquina</label>
-            <br>
-            <input id="esquina" type="text" />
+            <label>
+              Esquina
+              <br>
+              <input id="esquina" type="text" />
+            </label>
           </div>
 
         </div>
@@ -146,7 +154,7 @@
 <br>
 <br>
 <br>
-<button class="btn btn-primary" type="button" id="FinalizarCompra">Finalizar Compra</button>
+<button  class="btn btn-primary" type="button" id="FinalizarCompra" disabled>Finalizar Compra</button>
 <br>
 <br>
 <br>

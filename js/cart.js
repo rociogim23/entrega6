@@ -172,9 +172,6 @@ async function mostrarCarrito() {
 
 }
 
-
-
-
 const btnTema = document.getElementById('btnTema');
 const body = document.body;
 
@@ -205,3 +202,34 @@ btnTema.addEventListener('click', toggleTheme);
 let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
 let li_nav = document.getElementById("usuario");
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
+
+// Entrega 6 parte 3 (habilitar boton de finalizar compra)
+
+const calleInput = document.getElementById("calle");
+const numeroInput = document.getElementById("numero");
+const esquinaInput = document.getElementById("esquina");
+const confirmButton = document.getElementById("FinalizarCompra");
+
+function habilitarCompra() {
+    const calleInputValue = calleInput.value;
+    const numeroInputValue = numeroInput.value;
+    const esquinaInputValue = esquinaInput.value;
+
+    if (!calleInputValue || !numeroInputValue || !esquinaInputValue) return (confirmButton.disabled = true);
+
+    if (calleInputValue.length === 0) return (confirmButton.disabled = true);
+    
+    if (numeroInputValue.length === 0) return (confirmButton.disable = true);
+A
+    if (esquinaInputValue.length === 0) return (confirmButton.disable = true);
+    
+    confirmButton.disabled = false;
+}
+
+habilitarCompra();
+
+calleInput.addEventListener('input' , habilitarCompra);   
+numeroInput.addEventListener('input' , habilitarCompra);      
+esquinaInput.addEventListener('input' , habilitarCompra);      
+
+
