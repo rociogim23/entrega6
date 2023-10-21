@@ -73,7 +73,7 @@ async function mostrarCarrito() {
                 <td>${producto.moneda} ${producto.costo}</td>
                 <td><input class="cantidadInputNuevo" type="number" value="${producto.cantidad}" id="cantidad_${producto.nombre}"></td>
                 <td id="subTotal" class="negrita">${producto.moneda} <span class="costoProducto">${producto.cantidad * producto.costo}</span></td>
-                <td><button class="btn-quitar-producto, quitarProducto" data-nombre="${producto.nombre}">Eliminar</button></td>
+                <td><button class="btn-quitar-producto, quitarProducto" data-nombre="${producto.nombre}"> <i class="bi bi-trash">Eliminar</i></button></td>
             `;
 
             cont_tabla.appendChild(fila_tabla);
@@ -267,63 +267,7 @@ function actualizarPrecios() {
 
 //INICIO ENTREGA 6 PARTE 2
 
-let creditoRadio = document.getElementById("credito");
-let transferenciaRadio = document.getElementById("transferencia");
-let inputsTarjetaCredito = document.querySelectorAll("#tarjetaCredito input");
-let inputsTransferencia = document.querySelectorAll("#transferenciaBancaria input");
 
-creditoRadio.addEventListener("change", function () {
-    let isCreditoSelected = creditoRadio.checked;
-    inputsTarjetaCredito.forEach(input => {
-        input.disabled = !isCreditoSelected;
-    });
-
-    if (isCreditoSelected) {
-        inputsTransferencia.forEach(input => {
-            input.disabled = true;
-        });
-    }
-});
-
-transferenciaRadio.addEventListener("change", function () {
-    let isTransferenciaSelected = transferenciaRadio.checked;
-    inputsTransferencia.forEach(input => {
-        input.disabled = !isTransferenciaSelected;
-    });
-
-    if (isTransferenciaSelected) {
-        inputsTarjetaCredito.forEach(input => {
-            input.disabled = true;
-        });
-    }
-});
-
-let isModalOpen = false;
-
-function closeModal() {
-    isModalOpen = false;
-    let modal = document.getElementById("openModal");
-    modal.style.display = "none";
-    document.body.classList.remove("blur-background");
-}
-
-function openModal() {
-    isModalOpen = true;
-    let modal = document.getElementById("openModal");
-    modal.style.display = "block";
-    document.body.classList.add("blur-background");
-    localStorage.setItem('modalOpened', 'true');
-}
-
-document.querySelector('a[href="#close"]').addEventListener('click', function (event) {
-    event.preventDefault();
-    closeModal();
-});
-
-document.querySelector('a[href="#openModal"]').addEventListener('click', function (event) {
-    event.preventDefault();
-    openModal();
-});
 
 //FIN ENTREGA 6 PARTE 2
 
