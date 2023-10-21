@@ -118,17 +118,10 @@ async function mostrarCarrito() {
 
         totalTd.textContent = tipoMoneda + " " + total;
     }
-
-
-
-
 }
 
-
-
-
-const btnTema = document.getElementById('btnTema');
-const body = document.body;
+let btnTema = document.getElementById('btnTema');
+let body = document.body;
 
 // Función para cambiar el tema
 function toggleTheme() {
@@ -154,3 +147,151 @@ btnTema.addEventListener('click', toggleTheme);
 let email = localStorage.getItem("email");
 let li_nav = document.getElementById("usuario");
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
+
+//INICIO ENTREGA 6 PUNTO 1
+
+//SUBTOTAL ENTREGA 6 PUNTO 1
+
+let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+
+document.addEventListener("DOMContentLoaded", function () {
+    let subtotales = document.querySelectorAll(".costoProducto");
+    let total = 0;
+    subtotales.forEach(subtotal => {
+        total += parseFloat(subtotal.textContent);
+    });
+    subtotaldeTodos.textContent = "USD " + total.toFixed(2);
+});
+
+document.addEventListener("input", function (event) {
+    if (event.target.classList.contains("cantidadInputNuevo")) {
+        let subtotales = document.querySelectorAll(".costoProducto");
+        let total = 0;
+        subtotales.forEach(subtotal => {
+            total += parseFloat(subtotal.textContent);
+        });
+        subtotaldeTodos.textContent = "USD " + total.toFixed(2);
+        calcularTotal();
+    }
+});
+
+//COSTO DE ENVIO ENTREGA 6 PUNTO 1
+document.addEventListener("DOMContentLoaded", function () {
+
+    let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    let premiumRadio = document.getElementById("premium");
+    let expressRadio = document.getElementById("express");
+    let standardRadio = document.getElementById("standard");
+
+    CalcularSubtotaldeEnvio();
+
+    premiumRadio.addEventListener("change", CalcularSubtotaldeEnvio);
+    expressRadio.addEventListener("change", CalcularSubtotaldeEnvio);
+    standardRadio.addEventListener("change", CalcularSubtotaldeEnvio);
+
+    function CalcularSubtotaldeEnvio() {
+        let subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
+        let porcentajeSubtotal = 0;
+
+        if (premiumRadio.checked) {
+            porcentajeSubtotal = 0.15; // 15%
+        } else if (expressRadio.checked) {
+            porcentajeSubtotal = 0.07; // 7%
+        } else if (standardRadio.checked) {
+            porcentajeSubtotal = 0.05; // 5%
+        }
+
+        let subtotalconEnvio = subtotalTodos * porcentajeSubtotal;
+        subtotaldeEnvio.textContent = "USD " + subtotalconEnvio.toFixed(2);
+    }
+});
+
+//TOTAL ENTREGA 6 PARTE 1
+document.addEventListener("DOMContentLoaded", function () {
+    let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    let totaldeTodo = document.querySelector(".totaldeTodo");
+
+    calcularYmostrarTotal();
+
+    subtotaldeEnvio.addEventListener("DOMSubtreeModified", calcularYmostrarTotal);
+    subtotaldeTodos.addEventListener("DOMSubtreeModified", calcularYmostrarTotal);
+
+    function calcularYmostrarTotal() {
+        let subtotalEnvio = parseFloat(subtotaldeEnvio.textContent.replace("USD ", ""));
+        let subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
+
+        let total = subtotalTodos + subtotalEnvio;
+        totaldeTodo.textContent = "USD " + total.toFixed(2);
+    }
+});
+
+function actualizarPrecios() {
+    let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
+    let totaldeTodo = document.querySelector(".totaldeTodo");
+    
+    let subtotales = document.querySelectorAll(".costoProducto");
+    let totalSubtotal = 0;
+    
+    subtotales.forEach(subtotal => {
+        totalSubtotal += parseFloat(subtotal.textContent);
+    });
+    
+    let premiumRadio = document.getElementById("premium");
+    let expressRadio = document.getElementById("express");
+    let standardRadio = document.getElementById("standard");
+    let porcentajeSubtotal = 0;
+    
+    if (premiumRadio.checked) {
+        porcentajeSubtotal = 0.15; // 15%
+    } else if (expressRadio.checked) {
+        porcentajeSubtotal = 0.07; // 7%
+    } else if (standardRadio.checked) {
+        porcentajeSubtotal = 0.05; // 5%
+    }
+    
+    let subtotalEnvio = totalSubtotal * porcentajeSubtotal;
+    let total = totalSubtotal + subtotalEnvio;
+    
+    subtotaldeTodos.textContent = "USD " + totalSubtotal.toFixed(2);
+    subtotaldeEnvio.textContent = "USD " + subtotalEnvio.toFixed(2);
+    totaldeTodo.textContent = "USD " + total.toFixed(2);
+}
+
+
+
+
+//FIN ENTREGA 6 PARTE 1
+
+//INICIO ENTREGA 6 PARTE 2
+
+
+
+//FIN ENTREGA 6 PARTE 2
+
+//ENTREGA 6 Desafiate 
+
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("quitarProducto")) {
+
+        let productName = event.target.getAttribute("data-nombre");
+
+        productosCarrito = productosCarrito.filter(product => product.nombre !== productName);
+
+        localStorage.setItem('carrito', JSON.stringify(productosCarrito));
+
+        event.target.closest("tr").remove();
+    }
+});
+
+//Actualiza el Precio al quitar un producto
+document.addEventListener("DOMContentLoaded", actualizarPrecios);
+// Llama a la función para actualizar los precios cuando se elimina un producto
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("quitarProducto")) {
+        actualizarPrecios();
+    }
+});
+
