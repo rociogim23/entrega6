@@ -265,11 +265,6 @@ function actualizarPrecios() {
 
 //FIN ENTREGA 6 PARTE 1
 
-//INICIO ENTREGA 6 PARTE 2
-
-
-
-//FIN ENTREGA 6 PARTE 2
 
 //ENTREGA 6 Desafiate 
 
