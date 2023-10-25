@@ -290,3 +290,74 @@ document.addEventListener("click", function (event) {
     }
 });
 
+
+// Entrega 6 parte 3 (habilitar boton de finalizar compra)
+
+const calleInput = document.getElementById("calle");
+const numeroInput = document.getElementById("numero");
+const esquinaInput = document.getElementById("esquina");
+const confirmButton = document.getElementById("FinalizarCompra");
+const checkTarjeta = document.getElementById("checkTarjeta");
+const tarjetaInput = document.getElementById("nroTarjeta");
+const codSegInput = document.getElementById("codSeguridad");
+const vencimientoInput = document.getElementById("fechaVencimiento");
+const checkTransferencia = document.getElementById("checkTransferencia");
+const nroDeCuentaInput = document.getElementById("nrodeCuenta");
+
+
+function habilitarCompra() {
+    const calleInputValue = calleInput.value;
+    const numeroInputValue = numeroInput.value;
+    const esquinaInputValue = esquinaInput.value;
+    const tarjetaInputValue = tarjetaInput.value;
+    const codSegInputValue = codSegInput.value;
+    const vencimientoInputValue = vencimientoInput.value;
+    const nroDeCuentaInputValue = nroDeCuentaInput.value;
+        
+
+    if ( !calleInputValue || !numeroInputValue || !esquinaInputValue) return (confirmButton.disabled = true);
+
+    if (calleInputValue.length === 0) return (confirmButton.disabled = true);
+
+    if (numeroInputValue.length === 0) return (confirmButton.disable = true);
+
+    if (esquinaInputValue.length === 0) return (confirmButton.disable = true);
+
+    if (tarjetaInputValue.length === 0) return (confirmButton.disable = true);
+
+    if (codSegInputValue.length === 0) return (confirmButton.disable = true);
+
+    if (vencimientoInputValue.length === 0) return (confirmButton.disable = true);
+
+    if (nroDeCuentaInputValue.length === 0) return (confirmButton.disable = true);
+
+    confirmButton.disabled = false;
+}
+
+habilitarCompra();
+
+calleInput.addEventListener('input' , habilitarCompra);
+numeroInput.addEventListener('input' , habilitarCompra);
+esquinaInput.addEventListener('input' , habilitarCompra);
+
+
+checkTarjeta.addEventListener("change", function(){
+    if(checkTarjeta.checked){
+        nroDeCuentaInput.disabled=true;
+        tarjetaInput.disabled = false;
+        codSegInput.disabled = false;
+        vencimientoInput.disabled = false;
+    }else{
+        nroDeCuentaInput.disabled=false;
+    }
+
+});
+
+checkTransferencia.addEventListener("change", function(){
+    if (checkTransferencia.checked){
+        nroDeCuentaInput.disabled=false;
+        tarjetaInput.disabled = true;
+        codSegInput.disabled = true;
+        vencimientoInput.disabled = true;
+    }
+});

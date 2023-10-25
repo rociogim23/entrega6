@@ -71,7 +71,8 @@
                     </div>
                     <br />
                     <div>
-                        <input type="radio" id="standard" name="envio" />
+                        <input type="radio" checked="checked" id="standard" name="envio">
+                        <!--Se agrego el "checked="checked para iniciar la pagina con el standar predefinido.-->
                         <label>Standard 12 a 15 días (5%)</label>
                     </div>
                 </div>
@@ -80,21 +81,28 @@
                 <div id="direccionDeEnvio">
                     <h3>Dirección de envío</h3>
                     <div>
-                        <label>Calle</label>
-                        <br />
-                        <input id="calle" type="text" required />
+                        <!--Se borro el id del label "calle" -->
+                        <label>
+                            Calle
+                            <br>
+                            <input id="calle" type="text" placeholder="Ingrese una calle">
+                        </label>
                     </div>
                     <br />
                     <div>
-                        <label>Número</label>
-                        <br />
-                        <input id="numero" type="text" required />
+                        <label>
+                            Numero
+                            <br>
+                            <input id="numero" placeholder="Ingrese un nro de calle" type="text"required/>
+                        </label>
                     </div>
                     <br />
                     <div>
-                        <label>Esquina</label>
-                        <br />
-                        <input id="esquina" type="text" required />
+                        <label>
+                            Esquina
+                            <br>
+                            <input id="esquina" placeholder="Ingrese una esquina" type="text" />
+                        </label>
                     </div>
                 </div>
             </form>
@@ -145,35 +153,42 @@
                             <div class="form-group">
                                 <div class="container">
                                     <div>
-                                        <input type="radio" id="tarjetaCredito" name="transferencia" value="tarjetaCredito"/>
+                                        <input type="radio" id="checkTarjeta" name="transferencia"
+                                            value="tarjetaCredito" />
                                         <label for="tarjetaCredito" class="text-secondary">Tarjeta de crédito</label>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm">
-                                            <label for="recipient-name" class="text-secondary col-form-label">Número de tarjeta</label>
-                                            <input type="text" class="form-control" id="nroTarjeta" />
+                                            <label for="recipient-name" class="text-secondary col-form-label">Número de
+                                                tarjeta</label>
+                                            <input type="text" class="form-control" id="nroTarjeta" disabled/>
                                         </div>
                                         <div class="col-sm">
-                                            <label for="recipient-name" class="text-secondary col-form-label">Código de seg</label>
-                                            <input type="text" class="form-control" id="codSeguridad" />
+                                            <label for="recipient-name" class="text-secondary col-form-label">Código de
+                                                seguridad</label>
+                                            <input type="text" class="form-control" id="codSeguridad" disabled/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm">
-                                            <label for="recipient-name" class="text-secondary col-form-label">Vencimiento (MM/AA)</label>
-                                            <input type="text" class="form-control col-1" id="fechaVencimiento" />
+                                            <label for="recipient-name"
+                                                class="text-secondary col-form-label">Vencimiento (MM/AA)</label>
+                                            <input type="text" class="form-control col-1" id="fechaVencimiento" disabled/>
                                         </div>
                                     </div>
                                     <div>
-                                        <input type="radio" id="transfBancaria" name="transferencia" value="transfBancaria" />
-                                        <label class="text-secondary mt-3" for="transfBancaria">Transferencia bancaria</label>
+                                        <input type="radio" id="checkTransferencia" name="transferencia"
+                                            value="transfBancaria"/>
+                                        <label class="text-secondary mt-3" for="transfBancaria">Transferencia
+                                            bancaria</label>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm">
-                                            <label for="recipient-name" class="text-secondary col-form-label">Número de cuenta</label>
-                                            <input type="text" class="form-control" id="nrodeCuenta"/>
+                                            <label for="recipient-name" class="text-secondary col-form-label">Número de
+                                                cuenta</label>
+                                            <input type="text" class="form-control" id="nrodeCuenta" disabled/>
                                         </div>
                                     </div>
                                 </div>
@@ -192,9 +207,7 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-primary" type="button" id="FinalizarCompra">
-            Finalizar Compra
-        </button>
+        <button  class="btn btn-primary" type="button" id="FinalizarCompra" disabled>Finalizar Compra</button>
         <br />
         <br />
         <br />
