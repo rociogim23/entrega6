@@ -118,17 +118,10 @@ async function mostrarCarrito() {
 
         totalTd.textContent = tipoMoneda + " " + total;
     }
-
-
-
-
 }
 
-
-
-
-const btnTema = document.getElementById('btnTema');
-const body = document.body;
+let btnTema = document.getElementById('btnTema');
+let body = document.body;
 
 // Función para cambiar el tema
 function toggleTheme() {
@@ -153,7 +146,6 @@ btnTema.addEventListener('click', toggleTheme);
 //MOSTRAR BOTON CON NOMBRE DE USUARIO
 let email = localStorage.getItem("email");
 let li_nav = document.getElementById("usuario");
-<<<<<<< HEAD
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
 
 //INICIO ENTREGA 6 PUNTO 1
@@ -298,6 +290,3 @@ document.addEventListener("click", function (event) {
     }
 });
 
-=======
-li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
->>>>>>> parent of 3efef54 (Revert "Merge branch 'Parte-3-Branch-'")
