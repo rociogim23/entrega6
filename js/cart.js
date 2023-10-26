@@ -313,6 +313,7 @@ function habilitarCompra() {
     const codSegInputValue = codSegInput.value;
     const vencimientoInputValue = vencimientoInput.value;
     const nroDeCuentaInputValue = nroDeCuentaInput.value;
+    const usaTarjetaCredito = checkTarjeta.checked
         
 
     if ( !calleInputValue || !numeroInputValue || !esquinaInputValue) return (confirmButton.disabled = true);
@@ -323,13 +324,19 @@ function habilitarCompra() {
 
     if (esquinaInputValue.length === 0) return (confirmButton.disable = true);
 
-    if (tarjetaInputValue.length === 0) return (confirmButton.disable = true);
+    if (usaTarjetaCredito){
+        if (tarjetaInputValue.length === 0) return (confirmButton.disable = true);
+        if (codSegInputValue.length === 0) return (confirmButton.disable = true);
+        if (vencimientoInputValue.length === 0) return (confirmButton.disable = true);
 
-    if (codSegInputValue.length === 0) return (confirmButton.disable = true);
 
-    if (vencimientoInputValue.length === 0) return (confirmButton.disable = true);
+    } else {
+        if (nroDeCuentaInputValue.length === 0) return (confirmButton.disable = true);
+    }
+    
 
-    if (nroDeCuentaInputValue.length === 0) return (confirmButton.disable = true);
+
+    
 
     confirmButton.disabled = false;
 }
@@ -339,6 +346,14 @@ habilitarCompra();
 calleInput.addEventListener('input' , habilitarCompra);
 numeroInput.addEventListener('input' , habilitarCompra);
 esquinaInput.addEventListener('input' , habilitarCompra);
+tarjetaInput.addEventListener("input", habilitarCompra);
+codSegInput.addEventListener("input", habilitarCompra)
+vencimientoInput.addEventListener("input", habilitarCompra)
+checkTarjeta.addEventListener("input", habilitarCompra)
+checkTransferencia.addEventListener("inout", habilitarCompra)
+
+
+// agregar el resto de addEventListener
 
 
 checkTarjeta.addEventListener("change", function(){
