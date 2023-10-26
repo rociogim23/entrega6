@@ -421,6 +421,9 @@ body.dark-theme div {
   }
 
 }
+.error-field {
+  border: 1px solid red;
+}
 
 #btnEnviar {
   border-radius: 15px;

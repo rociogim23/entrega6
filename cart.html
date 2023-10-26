@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>eMercado - Todo lo que busques está aquí</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
         <div class="container">
@@ -30,14 +28,12 @@
                         <a class="nav-link" href="sell.html">Vender</a>
                     </li>
                     <li class="nav-item" dropdown>
-                        <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             <span id="usuario"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
-                            <button class="dropdown-item" id="btnTema">
-                                Modo día/Modo noche
-                            </button>
+                            <button class="dropdown-item" id="btnTema">Modo día/Modo noche</button>
                             <a class="dropdown-item" href="cart.html">Mi Carrito</a>
                             <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
                             <div class="dropdown-divider"></div>
@@ -52,67 +48,63 @@
         <div class="container text-center">
             <!-- Contenido principal -->
         </div>
-        <br />
-        <hr />
+        <br>
+        <hr>
         <!-- Inicio Entrega 5 Punto 2 -->
         <div id="datosDeEnvio" class="container">
             <form id="formularioEnvioCliente">
                 <div id="tipoDeEnvio">
                     <h3>Tipo de envío</h3>
-                    <br />
+                    <br>
                     <div>
-                        <input type="radio" id="premium" name="envio" />
+                        <input type="radio" id="premium" name="envio">
                         <label>Premium 2 a 5 días (15%)</label>
                     </div>
-                    <br />
+                    <br>
                     <div>
-                        <input type="radio" id="express" name="envio" />
+                        <input type="radio" id="express" name="envio">
                         <label>Express 5 a 8 días (7%)</label>
                     </div>
-                    <br />
+                    <br>
                     <div>
-                        <input type="radio" checked="checked" id="standard" name="envio">
-                        <!--Se agrego el "checked="checked para iniciar la pagina con el standar predefinido.-->
+                        <input type="radio" id="standard" name="envio">
                         <label>Standard 12 a 15 días (5%)</label>
                     </div>
+                    <div id="errorEnvio" class="error-message"></div>
                 </div>
                 <div id="envio-error" class="error-message"></div>
-                <br /><br />
+                <br><br>
                 <div id="direccionDeEnvio">
                     <h3>Dirección de envío</h3>
                     <div>
-                        <!--Se borro el id del label "calle" -->
-                        <label>
-                            Calle
-                            <br>
-                            <input id="calle" type="text" placeholder="Ingrese una calle">
-                        </label>
+                        <label>Calle</label>
+                        <br>
+                        <input class="" id="calle" type="text" required>
+                        <div id="errorCalle" class="error-message"></div>
                     </div>
-                    <br />
+                    <br>
                     <div>
-                        <label>
-                            Numero
-                            <br>
-                            <input id="numero" placeholder="Ingrese un nro de calle" type="text"required/>
-                        </label>
+                        <label>Número</label>
+                        <br>
+                        <input id="numero" type="text" required>
+                        <div id="errorNumero" class="error-message"></div>
                     </div>
-                    <br />
+                    <br>
                     <div>
-                        <label>
-                            Esquina
-                            <br>
-                            <input id="esquina" placeholder="Ingrese una esquina" type="text" />
-                        </label>
+                        <label>Esquina</label>
+                        <br>
+                        <input id="esquina" type="text" required>
+                        <div id="errorEsquina" class="error-message"></div>
                     </div>
                 </div>
             </form>
         </div>
-        <br />
+        <br>
         <!-- Fin Entrega 5 Punto 2 -->
-        <hr />
+        <hr>
         <div>
             <h3 id="cuadroCostos">Costos</h3>
-            <br />
+            <br>
             <div id="cuadroCostos" class="card-container">
                 <div class="div-cards row container" id="subtotal">
                     <h5>Subtotal</h5>
@@ -129,16 +121,18 @@
                     <span class="price col-sm-12 col-md-12, totaldeTodo">USD</span>
                 </div>
             </div>
-            <br />
-            <br />
+            <br>
+            <br>
         </div>
-        <hr />
+        <hr>
         <div class="container">
             <h3>Forma de pago</h3>
             <br />
             No ha seleccionado
             <a type="button" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                data-whatever="@mdo">Seleccionar</a>
+                data-whatever="@mdo">Seleccionar
+            </a>
+        
         </div>
 
         <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -160,21 +154,21 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm">
-                                            <label for="recipient-name" class="text-secondary col-form-label">Número de
+                                            <label for="recipient-name" class="text-secondary col-form-label ">Número de
                                                 tarjeta</label>
-                                            <input type="text" class="form-control" id="nroTarjeta" disabled/>
+                                            <input type="text" class="form-control campos-tarjeta" id="nroTarjeta" disabled/>
                                         </div>
                                         <div class="col-sm">
-                                            <label for="recipient-name" class="text-secondary col-form-label">Código de
+                                            <label for="recipient-name" class="text-secondary col-form-label ">Código de
                                                 seguridad</label>
-                                            <input type="text" class="form-control" id="codSeguridad" disabled/>
+                                            <input type="text" class="form-control campos-tarjeta" id="codSeguridad" disabled />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm">
                                             <label for="recipient-name"
                                                 class="text-secondary col-form-label">Vencimiento (MM/AA)</label>
-                                            <input type="text" class="form-control col-1" id="fechaVencimiento" disabled/>
+                                            <input type="text" class="form-control col-1 campos-tarjeta" id="fechaVencimiento"  disabled/>
                                         </div>
                                     </div>
                                     <div>
@@ -188,7 +182,7 @@
                                         <div class="col-sm">
                                             <label for="recipient-name" class="text-secondary col-form-label">Número de
                                                 cuenta</label>
-                                            <input type="text" class="form-control" id="nrodeCuenta" disabled/>
+                                            <input type="text" class="form-control campos-transferencia" id="nrodeCuenta" disabled/>
                                         </div>
                                     </div>
                                 </div>
@@ -198,19 +192,22 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
                             Cerrar
-                        </button>
+                        </button>                        
                     </div>
                 </div>
             </div>
         </div>
-
+        <div id="errorFormaPago" class="error-message container"></div>
         <br />
         <br />
         <br />
-        <button  class="btn btn-success"  type="button" id="FinalizarCompra" disabled>Finalizar Compra</button>
+        <button  class="btn btn-success"  type="button" id="FinalizarCompra" >Finalizar Compra</button>
         <br />
         <br />
         <br />
+        <div id="mensajeCompraExitosa" class="alert alert-success mt-3" style="display: none;">
+            Compra exitosa.
+        </div>
     </main>
     <footer class="text-muted">
         <div class="container">
@@ -234,8 +231,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-
+        crossorigin="anonymous">
+    </script>
     <script src="js/init.js"></script>
     <script src="js/cart.js"></script>
 </body>
