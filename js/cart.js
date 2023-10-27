@@ -157,47 +157,77 @@
 
     //SUBTOTAL 
 
-    let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
+    let subtotaldeTodos = document.querySelector(".subtotaldeTodos"); 
+// subtotaldeTodos referencia al elemento en el DOM donde se muestra el subtotal general
 
-    document.addEventListener("DOMContentLoaded", function () {
-        let subtotales = document.querySelectorAll(".costoProducto");
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // DOMContentLoaded hace el cálculo después de que se haya cargado la pág.
+        
+            let subtotales = document.querySelectorAll(".costoProducto");
+            //subtotales son todos los elementos en el DOM con la clase .costoProducto (precios unitarios de los productos en el carrito)
+
         let total = 0;
+//Iniciamos una variable total en 0, que se utilizará para guardar la suma de todos los subtotales
+
         subtotales.forEach(subtotal => {
             total += parseFloat(subtotal.textContent);
         });
+//iteramos los subtotales con un forEach donde para c/ subtotal, se suma su contenido dsps de parsearlo como decimal al total
+
         subtotaldeTodos.textContent = "USD " + total.toFixed(2);
+        //se muestra el resultado en subtotaldeTodos con el formato "USD X.XX" (X.XX valor calculado)
+        //se usa total.toFixed(2) para redondear a dos decimales
     });
 
+    //actualiza el subtotal en tiempo real cuando se cambian las cantidades
     document.addEventListener("input", function (event) {
+        //evento de escucha para el input... actua cuando el usuario modifica la cantidad
         if (event.target.classList.contains("cantidadInputNuevo")) {
+    // este if chequea si ese evento fue en un elemento con la clase cantidadInputNuevo
+    // esto nos asegurar que solo se actualiza el subtotal cuando cambian las cantidades
+
+            // mismo proceso que antes
             let subtotales = document.querySelectorAll(".costoProducto");
             let total = 0;
             subtotales.forEach(subtotal => {
                 total += parseFloat(subtotal.textContent);
             });
             subtotaldeTodos.textContent = "USD " + total.toFixed(2);
+
+            //se llama a la función que hace el cálculo del costo de envío y actualiza el total final
             calcularTotal();
         }
     });
 
     //COSTO DE ENVIO 
+
+    
+// usamos DOMContentLoaded para que el código se ejecute una vez que la pág se haya cargado 
     document.addEventListener("DOMContentLoaded", function () {
 
+        //referencias a elementos del dom
         let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
         let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
         let premiumRadio = document.getElementById("premium");
         let expressRadio = document.getElementById("express");
         let standardRadio = document.getElementById("standard");
 
+        // llamamos a la función CalcularSubtotaldeEnvio para calcular y mostrar el costo de envío inicialmente.
         CalcularSubtotaldeEnvio();
 
+        //agregamos event listeners a los elementos de entrada de radio para q cdo el usuario cambie su selección, se calcule el costo de envío respectivamente
         premiumRadio.addEventListener("change", CalcularSubtotaldeEnvio);
         expressRadio.addEventListener("change", CalcularSubtotaldeEnvio);
         standardRadio.addEventListener("change", CalcularSubtotaldeEnvio);
 
+        // realiza el cálculo del costo de envío
         function CalcularSubtotaldeEnvio() {
             let subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
-            let porcentajeSubtotal = 0;
+              // Obtiene el valor del subtotal general y lo parsea como decimal
+            let porcentajeSubtotal = 0; 
+            
+            // elige porcentaje costo de envío según el tipo de envío seleccionado 
 
             if (premiumRadio.checked) {
                 porcentajeSubtotal = 0.15; // 15%
@@ -206,13 +236,21 @@
             } else if (standardRadio.checked) {
                 porcentajeSubtotal = 0.05; // 5%
             }
+// y se le agrega a la variable inicializada en 0 anteriormente
 
+
+            //Calcula el costo de envío multiplicando el subtotal general por el porcentaje
             let subtotalconEnvio = subtotalTodos * porcentajeSubtotal;
-            subtotaldeEnvio.textContent = "USD " + subtotalconEnvio.toFixed(2);
+            subtotaldeEnvio.textContent = "USD " + subtotalconEnvio.toFixed(2); //le da formato texto al resultado con "USD XX.XX".
+            
         }
+
     });
 
     //TOTAL 
+
+//actualiza contenido de subtotaldeEnvio con el nuevo costo de envío calculado
+
     document.addEventListener("DOMContentLoaded", function () {
         let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
         let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
